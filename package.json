@@ -77,12 +77,5 @@
     "prettier": "^2.3.0",
     "semantic-release": "^17.4.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,json,css}": [
-      "npm run lint",
-      "npm run check-format",
-      "npm run check-types"
-    ]
   }
 }
