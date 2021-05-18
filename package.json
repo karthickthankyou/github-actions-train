@@ -25,7 +25,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "prettier": "prettier --ignore-path .gitignore \"**/*.{js,jsx,ts,tsx,json}\"",
-    "check-types": "tsc",
+    "check-types": "tsc --noEmit",
     "lint": "eslint --ext .ts --ext .tsx .",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --check",
@@ -78,6 +78,10 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   },
   "lint-staged": {
-    "*.--write": "npm run validate"
+    "src/**/*.{js,jsx,ts,tsx,json,css}": [
+      "npm run lint",
+      "npm run check-types",
+      "npm run check-format"
+    ]
   }
 }
