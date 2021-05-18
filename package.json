@@ -26,9 +26,10 @@
     "build-storybook": "build-storybook -s public",
     "prettier": "prettier --ignore-path .gitignore \"**/*.{js,jsx,ts,tsx,json}\"",
     "check-types": "tsc",
+    "lint": "eslint --ext .ts --ext .tsx .",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --check",
-    "validate": "npm-run-all --parallel check-types check-format",
+    "validate": "npm-run-all --parallel check-types check-format lint",
     "prepare": "husky install"
   },
   "eslintConfig": {
