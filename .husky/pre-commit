@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run validate
-# npx lint-staged
+# npm run validate
+npx lint-staged
