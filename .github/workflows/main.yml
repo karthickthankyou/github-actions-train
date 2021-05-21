@@ -79,6 +79,7 @@ jobs:
         env:
           CI: true
       - name: deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: ambientlight/amplify-cli-action@0.2.2
         with:
           amplify_command: publish
