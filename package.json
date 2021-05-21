@@ -34,7 +34,8 @@
     "cypress:open": "cypress open",
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
     "cypress:run": "cypress run",
-    "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
+    "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "eslintConfig": {
     "extends": [
