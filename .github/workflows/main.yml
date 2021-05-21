@@ -49,7 +49,7 @@ jobs:
         #   GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
       - name: Publish to Chromatic
         uses: chromaui/action@v1
-        # Chromatic GitHub Action options
+        # Chromatic GitHub Action options replaced into main.yml
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
