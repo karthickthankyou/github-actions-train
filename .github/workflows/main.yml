@@ -49,6 +49,9 @@ jobs:
         #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         #   # pass GitHub token to allow accurately detecting a build vs a re-run build
         #   GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
+      - name: Codecov
+        uses: codecov/codecov-action@v1.5.0
+      # Chromatic part
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         # Chromatic GitHub Action options replaced into main.yml. Retrying.
