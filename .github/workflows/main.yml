@@ -31,8 +31,9 @@ jobs:
           node-version: '12.x'
       - run: npm ci
       - run: npm run validate
-      - name: Cypress run
+      - name: Cypress run web
       - run: npm run cypress:run
+      - name: Cypress run mobile
       - run: npm run cypress:run:mobile
         # uses: cypress-io/github-action@v2
         # with:
