@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+[![CI](https://github.com/karthickthankyou/youtube-clone-train/actions/workflows/main.yml/badge.svg)](https://github.com/karthickthankyou/youtube-clone-train/actions/workflows/main.yml)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
