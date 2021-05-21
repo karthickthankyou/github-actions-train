@@ -7,12 +7,14 @@ const TestUI = ({}: ITestUIProps) => {
       <span>This is so cool!</span>
       <div
         style={{
-          height: '400px',
+          height: '200px',
           width: '200px',
           padding: '20px',
-          background: '#ff0000',
+          background: '#ffff00',
         }}
-      ></div>
+      >
+        Hello World
+      </div>
     </div>
   )
 }
