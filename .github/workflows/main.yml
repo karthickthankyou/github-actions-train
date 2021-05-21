@@ -35,15 +35,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: configure amplify
-        uses: ambientlight/amplify-cli-action@0.2.2
-        with:
-          amplify_command: configure
-          amplify_env: prod
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
+      # - name: configure amplify
+      #   uses: ambientlight/amplify-cli-action@0.2.2
+      #   with:
+      #     amplify_command: configure
+      #     amplify_env: prod
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_REGION: us-east-1
       - run: npm ci
       - run: npm run validate
       - name: Cypress run web
@@ -78,16 +78,16 @@ jobs:
       - run: npm run build
         env:
           CI: true
-      - name: deploy
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: ambientlight/amplify-cli-action@0.2.2
-        with:
-          amplify_command: publish
-          amplify_env: prod
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
+      # - name: deploy
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   uses: ambientlight/amplify-cli-action@0.2.2
+      #   with:
+      #     amplify_command: publish
+      #     amplify_env: prod
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_REGION: us-east-1
       - name: Create a release
         run: npx semantic-release
         env:
@@ -97,3 +97,8 @@ jobs:
         run: npx codecov
         env:
           CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+      - name: Slack Notification
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
