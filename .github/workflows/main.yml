@@ -31,15 +31,18 @@ jobs:
           node-version: '12.x'
       - run: npm ci
       - run: npm run validate
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          record: true
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # pass GitHub token to allow accurately detecting a build vs a re-run build
-          GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
+      - name: Cypress run web
+        run: npm run cypress:run
+      - name: Cypress run mobile
+        run: npm run cypress:run:mobile
+        # uses: cypress-io/github-action@v2
+        # with:
+        #   record: true
+        # env:
+        #   # pass the Dashboard record key as an environment variable
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        #   # pass GitHub token to allow accurately detecting a build vs a re-run build
+        #   GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
       - run: npm run build
         env:
           CI: true
