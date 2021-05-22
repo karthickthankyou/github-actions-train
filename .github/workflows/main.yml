@@ -75,8 +75,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: build
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      - run: npm run build
+        run: npm run build
         env:
           CI: true
         # - name: deploy
@@ -99,6 +100,7 @@ jobs:
           AWS_DEFAULT_OUTPUT: json
         run: aws amplify start-job --app-id ${{secrets.APP_ID}} --branch-name main --job-type RELEASE
       - name: Create a release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{secrets.CUSTOM_TOKEN}}
