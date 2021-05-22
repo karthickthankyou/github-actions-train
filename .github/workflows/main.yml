@@ -98,9 +98,15 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'Pull Request Failed!'
+          SLACK_USERNAME: ragavek
+          SLACK_ICON: https://github.com/ragavek.png?size=48
 
       - name: Slack Notification
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: ragavek
+          SLACK_ICON: https://github.com/ragavek.png?size=48
